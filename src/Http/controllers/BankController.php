@@ -13,21 +13,37 @@ use Codificar\Bank\Http\Requests\ProviderAddGenericFormRequest;
 use Codificar\Bank\Http\Resources\ProviderGenericReportResource;
 use Codificar\Bank\Http\Resources\ProviderAddGenericResource;
 
-use Input, Validator;
+use Input, Validator, View;
 use Provider, Settings, Ledger, Finance;
 class BankController extends Controller {
 
-    public function getGenericReport()
-    {
-        // Get the provider id (some projects is 'provider_id' and others is just 'id')
-        $providerId = Input::get('provider_id') ? Input::get('provider_id') : Input::get('id');
-        $provider = Provider::find($providerId);
-        
-        $generic_report = Bank::getGenericSummary($provider->ledger->id, 'provider');
-        
-        // Return data
-		return new ProviderGenericReportResource([
-			'generic_report' => $generic_report
-		]);
-    }
+    /**
+	*  Return list of all banks
+	*/
+	public function banks(){
+		$banks = Bank::all();
+		return Response::json($banks);
+	}
+
+	/**
+	*  Painel Index
+	*/
+	public function index(){
+		$banks = Bank::all();
+		return View::make('bank::index')->with('banks', $banks);
+	}
+
+	/**
+	* Painel Create
+	*/
+	public function create(){
+		return View::make('bank::create');
+	}
+
+	/**
+	* Painel update
+	*/
+	public function update($id){
+		return View::make('bank::update')->with('id', $id);
+	}
 }

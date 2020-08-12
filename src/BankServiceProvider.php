@@ -11,6 +11,15 @@ class BankServiceProvider extends ServiceProvider {
         $this->loadViewsFrom(__DIR__.'/resources/views', 'bank');
 
         $this->loadMigrationsFrom(__DIR__.'/Database/migrations');
+
+        // Load trans files (Carrega tos arquivos de traducao) 
+        // $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'libTans');
+
+        // Publish the VueJS files inside public folder of main project (Copia os arquivos do vue minificados dessa biblioteca para pasta public do projeto que instalar essa lib)
+        $this->publishes([
+            __DIR__.'/../public/js' => public_path('vendor/codificar/bank'),
+        ], 'public_vuejs_libs');
+        
     }
 
     public function register()
