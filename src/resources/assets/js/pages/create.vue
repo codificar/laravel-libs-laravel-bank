@@ -3,7 +3,7 @@
     <div class="col-lg-12">
       <div class="card card-outline-info">
         <div class="card-header">
-          <h4 class="m-b-0 text-white">Adicionar banco</h4>
+          <h4 class="m-b-0 text-white">{{this.trans("bank.add_bank") }}</h4>
         </div>
         <div class="card-block">
           <div class="row">
@@ -16,37 +16,53 @@
                 <div class="box-body">
                   <!--/ ROW 1 -->
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div class="form-group">
-                        <label for="giveName">Nome do Banco:</label>
-                        <input
-                          v-model="form.name"
-                          type="text"
-                          class="form-control"
-                          placeholder="Nome do Banco"
-                          maxlength="255"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label for="giveName">Código do Banco :</label>
+                        <label for="giveName">{{this.trans("bank.bank_code") }}</label>
                         <input
                           v-model="form.code"
                           type="number"
                           class="form-control"
-                          placeholder="Código do Banco"
+                          v-bind:placeholder= "trans('bank.bank_code')"
                           maxlength="5"
                         />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="giveName">{{this.trans("bank.bank_name") }}</label>
+                        <input
+                          v-model="form.name"
+                          type="text"
+                          class="form-control"
+                          v-bind:placeholder="trans('bank.bank_name')"
+                          maxlength="255"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="giveName">{{this.trans("bank.country") }}</label>
+                        <select
+                          name="Country"
+                          v-model="form.agency_digit_required"
+                          class="select form-control"
+                        >
+                          <option value="0">Brasil</option>
+                          <option value="1">Angola</option>
+                          <option value="1">Paraguai</option>
+                          <option value="1">Chile</option>
+                          <option value="1">Espanha</option>
+                        </select>
                       </div>
                     </div>
                   </div>
                   <!--/ END ROW 1 -->
                   <!--/ ROW 2-->
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <div class="form-group">
-                        <label for="giveName">Caracteres Agência :</label>
+                        <label for="giveName">{{this.trans('bank.agency_caracteres_length')}}</label>
                         <input
                           v-model="form.agency_max_length"
                           type="number"
@@ -58,25 +74,25 @@
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="control-label">Digito da Agência obrigatorio</label>
+                        <label class="control-label">{{this.trans('bank.agency_digit_required')}}</label>
                         <select
                           name="IsWork"
-                          v-model="form.agency__digit_required"
+                          v-model="form.agency_digit_required"
                           class="select form-control"
                         >
-                          <option value="0">Não</option>
-                          <option value="1">Sim</option>
+                          <option value="0">{{ trans("bank.no") }}</option>
+                          <option value="1">{{ trans("bank.yes") }}</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label for="giveName">Caracteres Digito da Agência :</label>
+                        <label for="giveName">{{this.trans('bank.agency_digit_length')}}</label>
                         <input
-                          v-model="form.agency__digit_max_length"
+                          v-model="form.agency_digit_max_length"
                           type="number"
                           class="form-control"
-                          placeholder="Caracteres Digito da Agência"
+                          v-bind:placeholder="trans('bank.agency_digit_length')"
                           maxlength="10"
                         />
                       </div>
@@ -87,37 +103,37 @@
                   <div class="row">
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label for="giveName">Caracteres da Conta :</label>
+                        <label for="giveName">{{ trans("bank.account_caracteres_length") }}</label>
                         <input
                           v-model="form.account_max_length"
                           type="number"
                           class="form-control"
-                          placeholder=" 	Caracteres da Conta"
+                          v-bind:placeholder="trans('bank.account_caracteres_length')"
                           maxlength="10"
                         />
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label class="control-label">Digito Conta obrigatorio</label>
+                        <label class="control-label">{{this.trans('bank.account_digit_required')}}</label>
                         <select
                           name="IsWork"
-                          v-model="form.account__digit_required"
+                          v-model="form.account_digit_required"
                           class="select form-control"
                         >
-                          <option value="1">Sim</option>
-                          <option value="0">Não</option>
+                          <option value="1">{{ trans("bank.yes") }}</option>
+                          <option value="0">{{ trans("bank.no") }}</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label for="giveName">Caracteres da Digito Conta :</label>
+                        <label for="giveName">{{this.trans('bank.account_digit_length')}}</label>
                         <input
                           v-model="form.account_digit_max_length"
                           type="number"
                           class="form-control"
-                          placeholder="Caracteres da Digito Conta"
+                          v-bind:placeholder="trans('bank.account_digit_length')"
                           maxlength="10"
                         />
                       </div>
@@ -133,7 +149,7 @@
                       value="Filter_Data"
                     >
                       <i class="mdi mdi-pencil"></i>
-                      Salvar
+                      {{ trans("bank.save") }}
                     </button>
                     <button
                       v-else
@@ -143,7 +159,7 @@
                       value="Filter_Data"
                     >
                       <i class="mdi mdi-plus-circle"></i>
-                      Adicionar Banco
+                      {{ this.trans("bank.add") }}
                     </button>
                   </div>
                 </div>
@@ -180,11 +196,11 @@ export default {
         name: null,
         code: null,
         agency_max_length: 4,
-        agency__digit_required: 0,
-        agency__digit_max_length: 1,
+        agency_digit_required: 0,
+        agency_digit_max_length: 1,
 
         account_max_length: 11,
-        account__digit_required: 1,
+        account_digit_required: 1,
         account_digit_max_length: 1,
       },
     };
@@ -195,10 +211,10 @@ export default {
       this.form.name = data.name;
       this.form.code = data.code;
       this.form.agency_max_length = data.agency_max_length;
-      this.form.agency__digit_required = data.agency__digit_required;
-      this.form.agency__digit_max_length = data.agency__digit_max_length;
+      this.form.agency_digit_required = data.agency_digit_required;
+      this.form.agency_digit_max_length = data.agency_digit_max_length;
       this.form.account_max_length = data.account_max_length;
-      this.form.account__digit_required = data.account__digit_required;
+      this.form.account_digit_required = data.account_digit_required;
       this.form.account_digit_max_length = data.account_digit_max_length;
     }
   },
@@ -232,6 +248,8 @@ export default {
       }
     },
     async edit() {
+
+      console.log('edit method')
       try {
         this.form.id = this.dataId;
         const result = await axios.put(
@@ -282,7 +300,7 @@ export default {
 #tree-content {
   padding-bottom: 40px;
 }
-/* .vue-treeselect__multi-value-item-container {
+/* .vue-treeselect_multi-value-item-container {
   display: none;
 } */
 </style>

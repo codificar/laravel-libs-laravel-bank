@@ -14,8 +14,8 @@
 @section('content')
 <div id="VueJs" class="col-lg-12">
 	<createbank
-		index-route = "{{ URL::Route('bank_panel.index') }}"
-		store-route = "{{ URL::Route('bank_panel.store') }}"	
+		index-route = "{{ URL::Route('banks.index') }}"
+		store-route = "{{ URL::Route('banks.store') }}"	
 		panel-route = "{{ URL::Route('PanelBank') }}"	
 
 		is-edit = "{{ false }}"		
@@ -35,6 +35,7 @@
     translate["user_provider_web.rate"] = "{{ trans('user_provider_web.rate') }}";
 </script>
 <script src="/js/lang.trans/requests,dashboard,provider"> </script> 
+<script src="/libs/lang.trans/bank"> </script> 
 <script src="{{ elixir('vendor/codificar/bank/bank.vue.js') }}"> </script> 
 @stop
 

@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Carbon\Carbon;
 use Eloquent;
-use Finance;
 
 class Bank extends Eloquent
 {
@@ -25,8 +24,8 @@ class Bank extends Eloquent
 	 */
 	public $timestamps = true;
 
-    protected $fillable = array('id', 'name', 'code', 'agency_max_length', 'agency__digit_required', 'agency__digit_max_length', 'account_max_length',
-        'account__digit_required', 'account_digit_max_length');
+    protected $fillable = array('id', 'name', 'code', 'agency_max_length', 'agency_digit_required', 'agency_digit_max_length', 'account_max_length',
+        'account_digit_required', 'account_digit_max_length');
 
     public static function buildTreeData(){
         $treeData = [] ;
@@ -43,8 +42,8 @@ class Bank extends Eloquent
         return $treeData ;
 	}
 
-	public function search($id = null, $name = null, $code = null, $agency_max_length = null, $agency__digit_required =
-        null, $agency__digit_max_length = null, $account_max_length = null, $account__digit_required = null,
+	public function search($id = null, $name = null, $code = null, $agency_max_length = null, $agency_digit_required =
+        null, $agency_digit_max_length = null, $account_max_length = null, $account_digit_required = null,
         $account_digit_max_length = null
     )
     {
@@ -62,25 +61,25 @@ class Bank extends Eloquent
         if ($agency_max_length) {
             $query->where('agency_max_length', $agency_max_length);
         }        
-        if ($agency__digit_required != null) {
-            if($agency__digit_required == 1){
-                $query->where('agency__digit_required',true);
+        if ($agency_digit_required != null) {
+            if($agency_digit_required == 1){
+                $query->where('agency_digit_required',true);
             }else{
-                $query->where('agency__digit_required',false);
+                $query->where('agency_digit_required',false);
             }
         }
-        if ($agency__digit_max_length) {
-        $query->where('agency__digit_max_length', $agency__digit_max_length);
+        if ($agency_digit_max_length) {
+        $query->where('agency_digit_max_length', $agency_digit_max_length);
         }
 
         if ($account_max_length) {
         $query->where('account_max_length', $account_max_length);
         }
-        if ($account__digit_required != null) {
-            if($account__digit_required == 1){
-                $query->where('account__digit_required',true);
+        if ($account_digit_required != null) {
+            if($account_digit_required == 1){
+                $query->where('account_digit_required',true);
             }else{
-                $query->where('account__digit_required',false);
+                $query->where('account_digit_required',false);
             }
         
         }

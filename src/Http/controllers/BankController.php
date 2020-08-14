@@ -7,11 +7,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 //FormRequest
-use Codificar\Bank\Http\Requests\ProviderAddGenericFormRequest;
+use Codificar\Bank\Http\Requests\ProviderAddBankFormRequest;
 
 //Resource
-use Codificar\Bank\Http\Resources\ProviderGenericReportResource;
-use Codificar\Bank\Http\Resources\ProviderAddGenericResource;
+use Codificar\Bank\Http\Resources\ProviderBankReportResource;
+use Codificar\Bank\Http\Resources\ProviderAddBankResource;
 
 use Input, Validator, View;
 use Provider, Settings, Ledger, Finance;

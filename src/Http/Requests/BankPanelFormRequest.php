@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Codificar\Bank\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Validation\Rule;
+
 use App\Rules\CheckAdminUsername;
 use App\Rules\CheckAdminPassword;
 use App\Rules\CheckAdminIsCorp;
@@ -38,16 +40,18 @@ class BankPanelFormRequest extends FormRequest{
         }else if($this->method() == "PUT"){
             return [                
                 'name' => 'required',
-                'code' => 'required|unique:bank,code,'. $this->code,
+                'code' => ['required',
+                    Rule::unique('bank')->ignore($this->code, 'code')
+                ],
             ];
         }              
     }
 
     public function messages() {
         $messages = [
-            'first_name.required' => "Preencha o nome",
-            'code.required' => "Preencha o código",
-            'code.unique' => "Este código já foi cadastrado",
+            'name.required'             => 'O nome do banco é obrigatório',
+            'code.required'             => 'O código do banco é obrigatório',
+            'code.unique'               => 'O código informado já está cadastrado',
         ];
 
         return $messages;

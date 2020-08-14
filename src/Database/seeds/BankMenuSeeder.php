@@ -1,29 +1,29 @@
 <?php
 
+namespace Codificar\Bank\Database\seeds;
+
 use Illuminate\Database\Seeder;
+use Permission;
+use ProfilePermission;
 
 class BankMenuSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database seeds for bank Menu.
      *
      * @return void
      */
     public function run()
     {
-        Permission::updateOrCreate(['id' => 6213] , ['name' => 'bank', 'parent_id' => 2317, 'order' => 713, 'is_menu' => 1, 'url' => '', 'icon' => 'mdi mdi-bank']);
+        $bank = Permission::updateOrCreate(['name' => 'bank'] , ['name' => 'bank', 'parent_id' => 2317, 'order' => null, 'is_menu' => 1, 'url' => '', 'icon' => 'mdi mdi-bank']);
 
-        Permission::updateOrCreate(['id' => 6214], ['name' => 'add_bank', 'parent_id' => 6213, 'is_menu' => 1,
-        'order' =>
-        714, 'url' => '/admin/bank_panel/create']);
+        $add_bank = Permission::updateOrCreate(['name' => 'add_bank'], ['name' => 'add_bank', 'parent_id' => $bank->id, 'is_menu' => 1, 'order' => null, 'url' => '/admin/banks/create']);
 
-        Permission::updateOrCreate(['id' => 6215], ['name' => 'list_bank', 'parent_id' => 6213, 'is_menu' => 1,
-        'order' =>
-        715, 'url' => '/admin/bank_panel']);
+        $list_bank = Permission::updateOrCreate(['name' => 'list_bank'], ['name' => 'list_bank', 'parent_id' => $bank->id, 'is_menu' => 1, 'order' => null, 'url' => '/admin/banks']);
 
-        ProfilePermission::updateOrCreate(['id' => 1548], ['profile_id' => 3, 'permission_id' => 6213]);
-        ProfilePermission::updateOrCreate(['id' => 1549], ['profile_id' => 3, 'permission_id' => 6214]);
-        ProfilePermission::updateOrCreate(['id' => 1550], ['profile_id' => 3, 'permission_id' => 6215]);
+        ProfilePermission::updateOrCreate(['permission_id' => $bank->id], ['profile_id' => 3, 'permission_id' => $bank->id]);
+        ProfilePermission::updateOrCreate(['permission_id' => $add_bank->id], ['profile_id' => 3, 'permission_id' => $add_bank->id]);
+        ProfilePermission::updateOrCreate(['permission_id' => $list_bank->id], ['profile_id' => 3, 'permission_id' => $list_bank->id]);
 
         $this->command->info('Bank Permissions created!');
     }

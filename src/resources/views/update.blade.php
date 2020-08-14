@@ -12,18 +12,16 @@
 </div>	
 @stop
 @section('content')
-<h1>update</h1>
 <div id="VueJs" class="col-lg-12">
 	<createbank
-		index-route = "{{ URL::Route('bank_panel.index') }}"
-		store-route = "{{ URL::Route('bank_panel.store') }}"	
+		index-route = "{{ URL::Route('banks.index') }}"
+		store-route = "{{ URL::Route('banks.store') }}"	
 		panel-route = "{{ URL::Route('PanelBank')}}"
 
         is-edit = "{{ true }}"	
 		data-id = "{{ $id }}"	
-		show-route = "{{ URL::Route('bank_panel.show', '') }}"	
-		store-route = "{{ URL::Route('bank_panel.store') }}"
-		update-route = "{{ URL::Route('bank_panel.update', '') }}"	
+		show-route = "{{ URL::Route('banks.show', '') }}"
+		update-route = "{{ URL::Route('banks.update', '') }}"	
 		>
 	</createbank>
 </div>
@@ -40,6 +38,7 @@
     translate["user_provider_web.rate"] = "{{ trans('user_provider_web.rate') }}";
 </script>
 <script src="/js/lang.trans/requests,dashboard,provider"> </script> 
+<script src="/libs/lang.trans/bank"> </script> 
 <script src="{{ elixir('vendor/codificar/bank/bank.vue.js') }}"> </script> 
 @stop
 

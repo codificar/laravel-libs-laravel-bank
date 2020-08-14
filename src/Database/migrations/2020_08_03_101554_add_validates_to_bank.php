@@ -16,12 +16,12 @@ class AddValidatesToBank extends Migration
         Schema::table('bank', function (Blueprint $table) {
             $table->integer('agency_max_length')->nullable()->default(4);
 
-            $table->boolean('agency__digit_required')->nullable()->default(false);
-            $table->integer('agency__digit_max_length')->nullable()->default(1);
+            $table->boolean('agency_digit_required')->nullable()->default(false);
+            $table->integer('agency_digit_max_length')->nullable()->default(1);
 
             $table->integer('account_max_length')->nullable()->default(11);
 
-            $table->boolean('account__digit_required')->nullable()->default(true);
+            $table->boolean('account_digit_required')->nullable()->default(true);
             $table->integer('account_digit_max_length')->nullable()->default(1);           
         });
     }
@@ -35,10 +35,10 @@ class AddValidatesToBank extends Migration
     {
         Schema::table('bank', function (Blueprint $table) {
             $table->dropColumn('agency_max_length');
-            $table->dropColumn('agency__digit_required');
-            $table->dropColumn('agency__digit_max_length');
+            $table->dropColumn('agency_digit_required');
+            $table->dropColumn('agency_digit_max_length');
             $table->dropColumn('account_max_length');
-            $table->dropColumn('account__digit_required');
+            $table->dropColumn('account_digit_required');
             $table->dropColumn('account_digit_max_length');
         });
     }

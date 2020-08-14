@@ -1,13 +1,38 @@
 <?php
 
 return array(    
-    'provider_is_required'      => 'Provider field is required.',
-    'provider_id_is_required'   => 'Provider id field is required.',
-    'holder_is_required'        => 'Holder field is required.',
+    'account'                   => 'Account',
+    'account_caracteres_length' => 'Account caracteres length',
+    'account_digit'             => 'Account digit',
+    'account_digit_required'    => 'Account digit required',
+    'account_digit_length'      => 'Account digit length',
+    'agency'                    => 'Agency',
+    'agency_caracteres_length'  => 'Agency caracters length',
+    'agency_digit'              => 'Agency digit',
+    'agency_digit_required'     => 'Agency digit required',
+    'agency_digit_length'       => 'Agency digit length',
+
+    'add_bank'                  => 'Add bank',
+    'bank'                      => 'Bank',
+    "bank_code"                 => "Bank code",
+	"bank_name"                 => "Bank name",
+	"bank_agency"               => "Agency",
+    "country"                   => "Country",
+
+    'action_grid'				=> 'Actions',
+    'edit' 		    			=> 'Edit',
+	'remove' 	    			=> 'Remove',
+	'add' 		    			=> 'Add',
+	'save'	    				=> 'Save',
+	'search'    				=> 'Search',
+    "filter"				    => "Filter",
+    "clear_filters"             => "Clear filters",
+
+    "yes"                       => "Yes",
+    "no"                        => "No",
+
     'bank_id_is_required'       => 'Bank field is required.',
     'agency_is_required'        => 'Agency field is required.',
-    'account_is_required'       => 'Account field is required.',
-    'account_digit_is_required' => 'Account digit field is required.',
     'agency_digit_is_required'  => 'Agengy digit field is required.',
     'bank'                      => 'Bank',
     'agency'                    => 'Agency',

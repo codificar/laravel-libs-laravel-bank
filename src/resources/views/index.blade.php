@@ -14,11 +14,11 @@
 @section('content')
 <div id="VueJs" class="col-lg-12">
 	<bankpanel
-		index-route = "{{ URL::Route('bank_panel.index') }}"
+		index-route = "{{ URL::Route('banks.index') }}"
 		filter-route = "{{ URL::Route('BankPanelFilter') }}"
 		create-route = "{{ URL::Route('CreateBank') }}"		
 		update-route = "{{ URL::Route('UpdateBank', '') }}"	
-		delete-route = "{{ URL::Route('bank_panel.destroy', '') }}"
+		delete-route = "{{ URL::Route('banks.destroy', '') }}"
 		>
 	</bankpanel>
 </div>
@@ -35,6 +35,7 @@
     translate["user_provider_web.rate"] = "{{ trans('user_provider_web.rate') }}";
 </script>
 <script src="/js/lang.trans/requests,dashboard,provider"> </script> 
+<script src="/libs/lang.trans/bank"> </script> 
 <script src="{{ elixir('vendor/codificar/bank/bank.vue.js') }}"> </script> 
 @stop
 

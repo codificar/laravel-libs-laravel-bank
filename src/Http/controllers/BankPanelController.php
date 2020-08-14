@@ -3,10 +3,12 @@
 namespace Codificar\Bank\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BankPanelFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+
 use Codificar\Bank\Models\Bank;
+use Codificar\Bank\Http\Requests\BankPanelFormRequest;
+
 
 //For Request
 
@@ -39,16 +41,16 @@ class BankPanelController extends Controller
 
         $agency_max_length = Input::get('agency_max_length');
 
-        $agency__digit_required = Input::get('agency__digit_required');
+        $agency_digit_required = Input::get('agency_digit_required');
 
-        $agency__digit_max_length = Input::get('agency__digit_max_length');
+        $agency_digit_max_length = Input::get('agency_digit_max_length');
         $account_max_length = Input::get('account_max_length');
-        $account__digit_required = Input::get('account__digit_required');
+        $account_digit_required = Input::get('account_digit_required');
         $account_digit_max_length = Input::get('account_digit_max_length');         
 
          
-        $data = Bank::search($id, $name, $code, $agency_max_length, $agency__digit_required,
-        $agency__digit_max_length, $account_max_length, $account__digit_required,
+        $data = Bank::search($id, $name, $code, $agency_max_length, $agency_digit_required,
+        $agency_digit_max_length, $account_max_length, $account_digit_required,
         $account_digit_max_length)->paginate(10);
 
         return $data;
