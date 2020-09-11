@@ -15,8 +15,9 @@
 <div id="VueJs" class="col-lg-12">
 	<createbank
 		index-route = "{{ URL::Route('banks.index') }}"
+		countries-route = "{{ URL::Route('Countries') }}"
 		store-route = "{{ URL::Route('banks.store') }}"	
-		panel-route = "{{ URL::Route('PanelBank')}}"
+		panel-route = "{{ URL::Route('PanelBank') }}"
 
         is-edit = "{{ true }}"	
 		data-id = "{{ $id }}"	

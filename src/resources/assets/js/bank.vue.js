@@ -4,6 +4,8 @@ require('lodash');
 
 import Vue from 'vue';
 
+import vSelect from 'vue-select'
+
 import VueResource from 'vue-resource';
 
 import ToggleButton from 'vue-js-toggle-button';
@@ -22,6 +24,8 @@ import createbank from "./pages/create.vue";
 import VueTheMask from 'vue-the-mask';
 
 Vue.use(VueTheMask)
+
+Vue.component('v-select', vSelect)
 
 Vue.component('VueElementLoading', VueElementLoading);
 

@@ -1,6 +1,7 @@
 <template>
        <CodificarBankPanel
         :index-route="indexRoute"
+        :countries-route="countriesRoute"
         :filter-route="filterRoute"
         :create-route="createRoute"
         :update-route="updateRoute"
@@ -15,7 +16,7 @@ import axios from "axios";
 // import the component
 import CodificarBankPanel from "../components/CodificarBankPanel/";
 export default {
-  props: ["indexRoute", "filterRoute", "createRoute", "updateRoute", "deleteRoute"],
+  props: ["indexRoute", "countriesRoute", "filterRoute", "createRoute", "updateRoute", "deleteRoute"],
   components: {
      CodificarBankPanel
   },

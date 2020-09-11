@@ -13,8 +13,7 @@ use Codificar\Bank\Http\Requests\ProviderAddBankFormRequest;
 use Codificar\Bank\Http\Resources\ProviderBankReportResource;
 use Codificar\Bank\Http\Resources\ProviderAddBankResource;
 
-use Input, Validator, View;
-use Provider, Settings, Ledger, Finance;
+use View;
 class BankController extends Controller {
 
     /**
@@ -46,4 +45,19 @@ class BankController extends Controller {
 	public function update($id){
 		return View::make('bank::update')->with('id', $id);
 	}
+
+	    /**
+     * Filter a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function filterByCountryISO(Request $request)
+    {		
+		//Data        
+        $country_iso = Input::get('country_iso');         
+        
+        $data = Bank::getAllByCountryISO($country_iso);
+
+        return $data;
+    }
 }

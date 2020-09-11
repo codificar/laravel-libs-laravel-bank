@@ -19,9 +19,10 @@ class BankPanelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Bank::paginate(10);
+        $itemsperpage = Input::get('itemsperpage');
+        return $itemsperpage ? Bank::paginate($itemsperpage) : Bank::all();
     }
 
     /**
@@ -33,7 +34,7 @@ class BankPanelController extends Controller
     {
         //Paginate
         $page = (Input::has('page') && Input::get('page') ? Input::get('page') : 1);
-        $itemsperpage = (Input::has('itemsperpage') && Input::get('itemsperpage') ? Input::get('itemsperpage') : 10);
+        $itemsperpage = (Input::has('itemsperpage') && Input::get('itemsperpage') ? Input::get('itemsperpage') : null);
         //Data        
         $id = Input::get('id');
         $name = Input::get('name');
@@ -46,14 +47,15 @@ class BankPanelController extends Controller
         $agency_digit_max_length = Input::get('agency_digit_max_length');
         $account_max_length = Input::get('account_max_length');
         $account_digit_required = Input::get('account_digit_required');
-        $account_digit_max_length = Input::get('account_digit_max_length');         
+        $account_digit_max_length = Input::get('account_digit_max_length');   
+        $country_iso = Input::get('country_iso');         
 
          
         $data = Bank::search($id, $name, $code, $agency_max_length, $agency_digit_required,
         $agency_digit_max_length, $account_max_length, $account_digit_required,
-        $account_digit_max_length)->paginate(10);
+        $account_digit_max_length, $country_iso);
 
-        return $data;
+        return $itemsperpage ? $data->paginate($itemsperpage) : $data->get();
     }
 
     /**
@@ -79,7 +81,7 @@ class BankPanelController extends Controller
      */
     public function show($id)
     {
-        return Bank::findOrfail($id);
+        return Bank::getById($id);
     }
 
     /**

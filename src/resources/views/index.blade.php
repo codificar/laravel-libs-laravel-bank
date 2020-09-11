@@ -15,6 +15,7 @@
 <div id="VueJs" class="col-lg-12">
 	<bankpanel
 		index-route = "{{ URL::Route('banks.index') }}"
+		countries-route = "{{ URL::Route('Countries') }}"
 		filter-route = "{{ URL::Route('BankPanelFilter') }}"
 		create-route = "{{ URL::Route('CreateBank') }}"		
 		update-route = "{{ URL::Route('UpdateBank', '') }}"	

@@ -2,13 +2,14 @@
 
 Route::group(array('namespace' => 'Codificar\Bank\Http\Controllers'), function () {
     Route::group(['prefix' => '/api'], function () {
-        Route::post('/banks/filter', array('as' => 'BankPanelFilter', 'uses' =>
+        Route::get('/banks/filter', array('as' => 'BankPanelFilter', 'uses' =>
          'BankPanelController@filter'));
         Route::resource('/banks', 'BankPanelController');
+        Route::get('/countries', array('as' => 'Countries', 'uses' => 'CountryController@countries'));
     });
 });
 
-Route::group(array('namespace' => 'Codificar\Bank\Http\Controllers', 'before' => 'auth.admin', 'middleware' => 'auth.admin'), function () {
+Route::group(array('namespace' => 'Codificar\Bank\Http\Controllers', 'middleware' => 'auth.admin'), function () {
 
     Route::group(['prefix' => '/admin'], function () {
 

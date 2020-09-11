@@ -2,28 +2,30 @@
 
 namespace Codificar\Bank\Http\Resources;
 
+use Codificar\Bank\Models\Bank;
+
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * Class ProviderBankReportResource
+ * Class BankDetailsResource
  *
  *
  *
  * @OA\Schema(
- *         schema="ProviderBankReportResource",
+ *         schema="BankDetailsResource",
  *         type="object",
  *         description="Retorno Retorno do relatorio de saques do prestador",
  *         title="Bank Details Resource",
  *        allOf={
- *           @OA\Schema(ref="#/components/schemas/ProviderBankReportResource"),
+ *           @OA\Schema(ref="#/components/schemas/BankDetailsResource"),
  *           @OA\Schema(
  *              required={"success", "request"},
  *           )
  *       }
  * )
  */
-class ProviderBankReportResource extends JsonResource {
+class BankDetailsResource extends JsonResource {
 
     /**
      * Transform the resource into an array.
