@@ -112,7 +112,7 @@ class Bank extends Eloquent
 	{
         $bank = self::select("country.*", "bank.*")
         ->where('bank.id', '=', $id)
-        ->join('country', 'bank.country_id', '=', 'country.id' )
+        ->leftJoin('country', 'bank.country_id', '=', 'country.id' )
         ->first();
 
 		return $bank;

@@ -39,27 +39,27 @@ PermissionProfile
 // ...
 
 "require": {
-    // ADD this
-    "codificar/bank": "dev-master",
+	// ADD this
+	"codificar/bank": "dev-master",
 },
 
 ```
 - If you want add a specific version (commit, tag or branch), so add like this:
 ```
-"codificar/bank": "dev-master",
+"codificar/bank": "dev-master#dev",
 ```
 - Now add 
 ```
 
 "autoload": {
-        //...
-        "psr-4": {
-            // Add your Lib here
-           "Codificar\\Bank\\": "vendor/codificar/laravel-bank/src",
-            //...
-        }
-    },
-    //...
+		//...
+		"psr-4": {
+			// Add your Lib here
+		   "Codificar\\Bank\\": "vendor/codificar/laravel-bank/src",
+			//...
+		}
+	},
+	//...
 ```
 - Dump the composer autoloader
 
@@ -69,8 +69,8 @@ composer dump-autoload -o
 
 Check if has the laravel publishes in composer.json with public_vuejs_libs tag:
 ```
-    "scripts": {
-        //...
+	"scripts": {
+		//...
 		"post-autoload-dump": [
 			"@php artisan vendor:publish --tag=public_vuejs_libs --force"
 		]
@@ -81,10 +81,10 @@ Check if has the laravel publishes in composer.json with public_vuejs_libs tag:
 
 ```
 'providers' => [
-         ...,
-            // The new package class
-            Codificar\Bank\BankServiceProvider::class,
-        ],
+		 ...,
+			// The new package class
+			Codificar\Bank\BankServiceProvider::class,
+		],
 ```
 - Migrate the database tables
 

@@ -29,6 +29,7 @@ class AlterBank extends Migration
     {
         Schema::table('bank', function($table)
 		{
+            $table->dropForeign('bank_country_id_foreign');
             $table->dropColumn('country_id');
         });
     }
