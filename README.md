@@ -12,6 +12,7 @@ auth.admin
 ```
 Bank
 Country
+Profile
 Permission
 PermissionProfile
 ```
@@ -104,9 +105,7 @@ php artisan serve
 | `get` | View/html | /admin/banks | View to list all banks |
 | `get` | View/html | /admin/banks/create | View to create a bank | 
 | `get` | View/html | /admin/banks/update/{id} | View to update a bank |
-| `get` | Api/json | /api/banks/filter | Endpoint to filter banks by id, name, code, agency_max_length, agency_digit_required,
-agency_digit_max_length, account_max_length, account_digit_required,
-account_digit_max_length, country_iso) |
+| `get` | Api/json | /api/banks/filter | Endpoint to filter banks by id, name, code, agency_max_length,agency_digit_required, agency_digit_max_length, account_max_length, account_digit_required, account_digit_max_length, country_iso) |
 | `resource` | Api/json | /api/banks | Api to get t|
 | `get` | Api/json | /api/countries | Api to get the list of countries |
 
