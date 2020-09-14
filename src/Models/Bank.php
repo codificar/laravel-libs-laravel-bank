@@ -27,7 +27,7 @@ class Bank extends Eloquent
 	public $timestamps = true;
 
     protected $fillable = array('id', 'name', 'code', 'agency_max_length', 'agency_digit_required', 'agency_digit_max_length', 'account_max_length',
-        'account_digit_required', 'account_digit_max_length');
+        'account_digit_required', 'account_digit_max_length', 'country_id');
 
 
     public function country() {

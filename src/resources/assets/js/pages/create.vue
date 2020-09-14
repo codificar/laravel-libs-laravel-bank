@@ -198,6 +198,7 @@ export default {
 			form: {
 				name: null,
 				code: null,
+				country_id : 0,
 				agency_max_length: 4,
 				agency_digit_required: 0,
 				agency_digit_max_length: 1,
