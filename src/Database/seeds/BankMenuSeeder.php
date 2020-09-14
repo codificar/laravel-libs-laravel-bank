@@ -3,6 +3,8 @@
 namespace Codificar\Bank\Database\seeds;
 
 use Illuminate\Database\Seeder;
+
+use Profile;
 use Permission;
 use ProfilePermission;
 
@@ -21,10 +23,15 @@ class BankMenuSeeder extends Seeder
 
         $list_bank = Permission::updateOrCreate(['name' => 'list_bank'], ['name' => 'list_bank', 'parent_id' => $bank->id, 'is_menu' => 1, 'order' => null, 'url' => '/admin/banks']);
 
-        ProfilePermission::updateOrCreate(['permission_id' => $bank->id], ['profile_id' => 3, 'permission_id' => $bank->id]);
-        ProfilePermission::updateOrCreate(['permission_id' => $add_bank->id], ['profile_id' => 3, 'permission_id' => $add_bank->id]);
-        ProfilePermission::updateOrCreate(['permission_id' => $list_bank->id], ['profile_id' => 3, 'permission_id' => $list_bank->id]);
+        // get all admin profiles
+        $profiles = Profile::filter(null, null, 'admin', null, 20);  
 
+        foreach ($profiles as $profile) {
+            ProfilePermission::updateOrCreate(['permission_id' => $bank->id], ['profile_id' => $profile->id, 'permission_id' => $bank->id]);
+            ProfilePermission::updateOrCreate(['permission_id' => $add_bank->id], ['profile_id' => $profile->id, 'permission_id' => $add_bank->id]);
+            ProfilePermission::updateOrCreate(['permission_id' => $list_bank->id], ['profile_id' => $profile->id, 'permission_id' => $list_bank->id]);
+        }
+        
         $this->command->info('Bank Permissions created!');
     }
 }
