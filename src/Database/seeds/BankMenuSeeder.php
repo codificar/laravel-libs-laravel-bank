@@ -16,7 +16,7 @@ class BankMenuSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {/*
         $bank = Permission::updateOrCreate(['name' => 'bank'] , ['name' => 'bank', 'parent_id' => 2317, 'order' => null, 'is_menu' => 1, 'url' => '', 'icon' => 'mdi mdi-bank']);
 
         $add_bank = Permission::updateOrCreate(['name' => 'add_bank'], ['name' => 'add_bank', 'parent_id' => $bank->id, 'is_menu' => 1, 'order' => null, 'url' => '/admin/banks/create']);
@@ -33,5 +33,6 @@ class BankMenuSeeder extends Seeder
         }
         
         $this->command->info('Bank Permissions created!');
+        */
     }
 }

@@ -23,7 +23,7 @@ class Country extends Eloquent
 	 */
 	public $timestamps = true;
 
-    protected $fillable = array('id', 'name','iso', 'phone_code');
+    protected $fillable = array('id', 'name', 'code', 'iso', 'phone_code');
     
     public function banks() {
         return $this->hasMany(Bank::class);
