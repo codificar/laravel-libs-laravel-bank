@@ -33,7 +33,6 @@ class AddBankToMenu extends Migration
             ProfilePermission::updateOrCreate(['permission_id' => $list_bank->id], ['profile_id' => $profile->id, 'permission_id' => $list_bank->id]);
         }
         
-        $this->command->info('Bank Permissions created!');
     }
 
     /**

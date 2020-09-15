@@ -26,7 +26,6 @@ class AddCountry extends Migration
         Country::updateOrCreate(['iso' => 'PY'], ['name' => 'Paraguai', 'code' => '600', 'phone_code' => '+595', 'created_at' => '2020-08-24 00:00:00', 'updated_at' => '2020-08-24 00:00:00']);
         Country::updateOrCreate(['iso' => 'ES'], ['name' => 'Espanha', 'code' => '724', 'phone_code' => '+34', 'created_at' => '2020-08-24 00:00:00', 'updated_at' => '2020-08-24 00:00:00']);
 
-        $this->command->info('Country table seeded!');
     }
 
     /**
