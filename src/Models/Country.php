@@ -27,6 +27,18 @@ class Country extends Eloquent
     
     public function banks() {
         return $this->hasMany(Bank::class);
+	}
+	
+	/**
+	 * Obtém o país pelo iso
+	 *
+	 * @return void
+	 */
+	public static function getByIso($iso)
+	{
+        $country = self::where('iso', '=', $iso)->first();
+
+		return $country;
     }
 
 	public function getNamePhoneCodeAttribute()
