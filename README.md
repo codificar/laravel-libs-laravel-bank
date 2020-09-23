@@ -56,7 +56,7 @@ PermissionProfile
 		//...
 		"psr-4": {
 			// Add your Lib here
-		   "Codificar\\Bank\\": "vendor/codificar/laravel-bank/src",
+		   "Codificar\\Bank\\": "vendor/codificar/bank/src",
 			//...
 		}
 	},
