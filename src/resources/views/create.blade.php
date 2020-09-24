@@ -38,5 +38,6 @@
 <script src="/js/lang.trans/requests,dashboard,provider"> </script> 
 <script src="/libs/lang.trans/bank"> </script> 
 <script src="{{ elixir('vendor/codificar/bank/bank.vue.js') }}"> </script> 
+<script> window.locale = '{{ app()->getLocale() }}' </script>
 @stop
 

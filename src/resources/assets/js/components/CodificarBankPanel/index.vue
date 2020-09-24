@@ -33,7 +33,7 @@
 												<label for="giveName">{{ trans("bank.bank_code") }}</label>
 												<input
 													v-model="filter.code"
-													type="number"
+													:type="locale() === 'pt-ao' ? 'text' : 'number'"
 													class="form-control"
 													v-bind:placeholder="trans('bank.bank_code')"
 													maxlength="10"

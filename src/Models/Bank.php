@@ -63,7 +63,7 @@ class Bank extends Eloquent
             $query->where('name', 'like', '%' . $name . '%');
         }
         if ($code) {
-            $query->where('code', $code);
+            $query->where('bank.code', $code);
         }
         if ($agency_max_length) {
             $query->where('agency_max_length', $agency_max_length);

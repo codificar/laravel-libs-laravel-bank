@@ -51,6 +51,10 @@ Vue.prototype.trans = (key) => {
 Vue.prototype.isEmpty = (obj) => {
     return _.isEmpty(obj);
 };
+//Return language of the system
+Vue.prototype.locale = () => {
+  return window.locale;
+};
 
 //Main vue instance
 new Vue({
