@@ -21,7 +21,7 @@
 												<label for="giveName">{{this.trans("bank.bank_code") }}</label>
 												<input
 													v-model="form.code"
-													:type="locale() === 'pt-ao' ? 'text' : 'number'"
+													:type="selectedCountry.iso === 'AO' ? 'text' : 'number'"
 													class="form-control"
 													v-bind:placeholder= "trans('bank.bank_code')"
 													maxlength="5"
@@ -44,14 +44,15 @@
 											<div class="form-group">
 												<label for="giveName">{{this.trans("bank.country") }}</label>
 												<select
-													v-model="form.country_id"
+													v-model="selectedCountry"
 													name="type_entry"
 													class="select form-control"
+													@change="selectCountry"
 												>
 													<option value="0">{{trans('bank.country') }}</option>
 													<option
 														v-for="option in countries"
-														v-bind:value="option.id"
+														v-bind:value="option"
 														v-bind:key="option.id"
 													>{{option.name}}</option>
 												</select>
@@ -59,88 +60,90 @@
 										</div>
 									</div>
 									<!--/ END ROW 1 -->
-									<!--/ ROW 2-->
-									<div class="row">
-										<div class="col-md-4">
-											<div class="form-group">
-												<label for="giveName">{{this.trans('bank.agency_caracteres_length')}}</label>
-												<input
-													v-model="form.agency_max_length"
-													type="number"
-													class="form-control"
-													placeholder="Caracteres Agência"
-													maxlength="10"
-												/>
+									<div v-if="selectedCountry.iso === 'BR'">
+										<!--/ ROW 2-->
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group">
+													<label for="giveName">{{this.trans('bank.agency_caracteres_length')}}</label>
+													<input
+														v-model="form.agency_max_length"
+														type="number"
+														class="form-control"
+														placeholder="Caracteres Agência"
+														maxlength="10"
+													/>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+													<label class="control-label">{{this.trans('bank.agency_digit_required')}}</label>
+													<select
+														name="IsWork"
+														v-model="form.agency_digit_required"
+														class="select form-control"
+													>
+														<option value="0">{{ trans("bank.no") }}</option>
+														<option value="1">{{ trans("bank.yes") }}</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+													<label for="giveName">{{this.trans('bank.agency_digit_length')}}</label>
+													<input
+														v-model="form.agency_digit_max_length"
+														type="number"
+														class="form-control"
+														v-bind:placeholder="trans('bank.agency_digit_length')"
+														maxlength="10"
+													/>
+												</div>
 											</div>
 										</div>
-										<div class="col-md-4">
-											<div class="form-group">
-												<label class="control-label">{{this.trans('bank.agency_digit_required')}}</label>
-												<select
-													name="IsWork"
-													v-model="form.agency_digit_required"
-													class="select form-control"
-												>
-													<option value="0">{{ trans("bank.no") }}</option>
-													<option value="1">{{ trans("bank.yes") }}</option>
-												</select>
+										<!--/ END ROW 2-->
+										<!--/ ROW 3-->
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group">
+													<label for="giveName">{{ trans("bank.account_caracteres_length") }}</label>
+													<input
+														v-model="form.account_max_length"
+														type="number"
+														class="form-control"
+														v-bind:placeholder="trans('bank.account_caracteres_length')"
+														maxlength="10"
+													/>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+													<label class="control-label">{{this.trans('bank.account_digit_required')}}</label>
+													<select
+														name="IsWork"
+														v-model="form.account_digit_required"
+														class="select form-control"
+													>
+														<option value="1">{{ trans("bank.yes") }}</option>
+														<option value="0">{{ trans("bank.no") }}</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+													<label for="giveName">{{this.trans('bank.account_digit_length')}}</label>
+													<input
+														v-model="form.account_digit_max_length"
+														type="number"
+														class="form-control"
+														v-bind:placeholder="trans('bank.account_digit_length')"
+														maxlength="10"
+													/>
+												</div>
 											</div>
 										</div>
-										<div class="col-md-4">
-											<div class="form-group">
-												<label for="giveName">{{this.trans('bank.agency_digit_length')}}</label>
-												<input
-													v-model="form.agency_digit_max_length"
-													type="number"
-													class="form-control"
-													v-bind:placeholder="trans('bank.agency_digit_length')"
-													maxlength="10"
-												/>
-											</div>
-										</div>
+										<!--/ END ROW 3-->
 									</div>
-									<!--/ END ROW 2-->
-									<!--/ ROW 3-->
-									<div class="row">
-										<div class="col-md-4">
-											<div class="form-group">
-												<label for="giveName">{{ trans("bank.account_caracteres_length") }}</label>
-												<input
-													v-model="form.account_max_length"
-													type="number"
-													class="form-control"
-													v-bind:placeholder="trans('bank.account_caracteres_length')"
-													maxlength="10"
-												/>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<div class="form-group">
-												<label class="control-label">{{this.trans('bank.account_digit_required')}}</label>
-												<select
-													name="IsWork"
-													v-model="form.account_digit_required"
-													class="select form-control"
-												>
-													<option value="1">{{ trans("bank.yes") }}</option>
-													<option value="0">{{ trans("bank.no") }}</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<div class="form-group">
-												<label for="giveName">{{this.trans('bank.account_digit_length')}}</label>
-												<input
-													v-model="form.account_digit_max_length"
-													type="number"
-													class="form-control"
-													v-bind:placeholder="trans('bank.account_digit_length')"
-													maxlength="10"
-												/>
-											</div>
-										</div>
-									</div>
-									<!--/ END ROW 3-->
 									<div class="box-footer pull-right m-2">
 										<button
 											v-if="this.isEdit"
@@ -195,6 +198,13 @@ export default {
 	data() {
 		return {
 			countries: [],
+			selectedCountry: {
+				id: undefined,
+				code: undefined,
+				iso: undefined,
+				name: undefined,
+				phone_code: undefined,
+			},
 			form: {
 				name: null,
 				code: null,
@@ -222,11 +232,30 @@ export default {
 			this.form.account_max_length = data.account_max_length;
 			this.form.account_digit_required = data.account_digit_required;
 			this.form.account_digit_max_length = data.account_digit_max_length;
+
+			this.selectedCountry = this.countries.find(country => country.id === data.country_id);
+		} else {
+			switch (window.locale) {
+				case 'pt-ao':
+					this.selectedCountry.iso = 'AO'
+					break;
+				case 'pt-br':
+					this.selectedCountry.iso = 'BR'
+					break;
+				default:
+					this.selectedCountry.iso = 'BR'
+					break;
+			}		
+			this.selectedCountry = this.countries.find(country => country.iso === this.selectedCountry.iso)
 		}
 	},
 	methods: {
+		selectCountry() {
+			this.form.country_id = this.selectedCountry.id;
+		},
 		async create() {
 			try {
+				this.form.country_id = this.selectedCountry.id;
 				const result = await axios.post(this.storeRoute, this.form);
 				if (result.data.sucess) {
 					this.$swal({
@@ -254,8 +283,6 @@ export default {
 			}
 		},
 		async edit() {
-
-			console.log('edit method')
 			try {
 				this.form.id = this.dataId;
 				const result = await axios.put(

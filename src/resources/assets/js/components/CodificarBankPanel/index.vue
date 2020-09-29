@@ -33,7 +33,7 @@
 												<label for="giveName">{{ trans("bank.bank_code") }}</label>
 												<input
 													v-model="filter.code"
-													:type="locale() === 'pt-ao' ? 'text' : 'number'"
+													:type="filter.country_iso === 'AO' ? 'text' : 'number'"
 													class="form-control"
 													v-bind:placeholder="trans('bank.bank_code')"
 													maxlength="10"
@@ -71,90 +71,92 @@
 										</div>
 									</div>
 									<!--/ END ROW 1 -->
-									<!--/ ROW 2-->
-									<div class="row">
-										<div class="col-md-4">
-											<div class="form-group">
-												<label for="giveName">{{ trans("bank.agency_caracteres_length") }}</label>
-												<input
-													v-model="filter.agency_max_length"
-													type="number"
-													class="form-control"
-													v-bind:placeholder="trans('bank.agency_caracteres_length')"
-													maxlength="10"
-												/>
+									<div v-if="filter.country_iso === 'BR'">
+										<!--/ ROW 2-->
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group">
+													<label for="giveName">{{ trans("bank.agency_caracteres_length") }}</label>
+													<input
+														v-model="filter.agency_max_length"
+														type="number"
+														class="form-control"
+														v-bind:placeholder="trans('bank.agency_caracteres_length')"
+														maxlength="10"
+													/>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+													<label class="control-label">{{ trans("bank.agency_digit_required") }}</label>
+													<select
+														name="IsWork"
+														v-model="filter.agency_digit_required"
+														class="select form-control"
+													>
+														<option :value="null">{{ trans("bank.agency_digit_required") }}</option>
+														<option value="1">{{ trans("bank.yes") }}</option>
+														<option value="0">{{ trans("bank.no") }}</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+													<label for="giveName">{{ trans("bank.agency_digit_length") }}</label>
+													<input
+														v-model="filter.agency_digit_max_length"
+														type="number"
+														class="form-control"
+														v-bind:placeholder="trans('bank.agency_digit_length')"
+														maxlength="10"
+													/>
+												</div>
 											</div>
 										</div>
-										<div class="col-md-4">
-											<div class="form-group">
-												<label class="control-label">{{ trans("bank.agency_digit_required") }}</label>
-												<select
-													name="IsWork"
-													v-model="filter.agency_digit_required"
-													class="select form-control"
-												>
-													<option :value="null">{{ trans("bank.agency_digit_required") }}</option>
-													<option value="1">{{ trans("bank.yes") }}</option>
-													<option value="0">{{ trans("bank.no") }}</option>
-												</select>
+										<!--/ END ROW 2-->
+										<!--/ ROW 3-->
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group">
+													<label for="giveName">{{ trans("bank.account_caracteres_length") }}</label>
+													<input
+														v-model="filter.account_max_length"
+														type="number"
+														class="form-control"
+														v-bind:placeholder="trans('bank.account_caracteres_length')"
+														maxlength="10"
+													/>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+													<label class="control-label">{{ trans("bank.account_digit_required") }}</label>
+													<select
+														name="IsWork"
+														v-model="filter.account_digit_required"
+														class="select form-control"
+													>
+														<option :value="null">{{ trans("bank.account_digit_required") }}</option>
+														<option value="0">{{ trans("bank.no") }}</option>
+														<option value="1">{{ trans("bank.yes") }}</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+													<label for="giveName">{{ trans("bank.account_digit_length") }}</label>
+													<input
+														v-model="filter.account_digit_max_length"
+														type="number"
+														class="form-control"
+														v-bind:placeholder="trans('bank.account_digit_length')"
+														maxlength="10"
+													/>
+												</div>
 											</div>
 										</div>
-										<div class="col-md-4">
-											<div class="form-group">
-												<label for="giveName">{{ trans("bank.agency_digit_length") }}</label>
-												<input
-													v-model="filter.agency_digit_max_length"
-													type="number"
-													class="form-control"
-													v-bind:placeholder="trans('bank.agency_digit_length')"
-													maxlength="10"
-												/>
-											</div>
-										</div>
+										<!--/ END ROW 3-->
 									</div>
-									<!--/ END ROW 2-->
-									<!--/ ROW 3-->
-									<div class="row">
-										<div class="col-md-4">
-											<div class="form-group">
-												<label for="giveName">{{ trans("bank.account_caracteres_length") }}</label>
-												<input
-													v-model="filter.account_max_length"
-													type="number"
-													class="form-control"
-													v-bind:placeholder="trans('bank.account_caracteres_length')"
-													maxlength="10"
-												/>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<div class="form-group">
-												<label class="control-label">{{ trans("bank.account_digit_required") }}</label>
-												<select
-													name="IsWork"
-													v-model="filter.account_digit_required"
-													class="select form-control"
-												>
-													<option :value="null">{{ trans("bank.account_digit_required") }}</option>
-													<option value="0">{{ trans("bank.no") }}</option>
-													<option value="1">{{ trans("bank.yes") }}</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-md-4">
-											<div class="form-group">
-												<label for="giveName">{{ trans("bank.account_digit_length") }}</label>
-												<input
-													v-model="filter.account_digit_max_length"
-													type="number"
-													class="form-control"
-													v-bind:placeholder="trans('bank.account_digit_length')"
-													maxlength="10"
-												/>
-											</div>
-										</div>
-									</div>
-									<!--/ END ROW 3-->
 									<div class="box-footer pull-left">
 										<button
 											@click="cleanFilters"
@@ -200,76 +202,13 @@
 					</h3>
 				</div>
 				<div class="card-block">
-					<table class="table table-bordered">
-						<tr>
-							<th>ID</th>
-							<th>{{ trans("bank.bank_name") }}</th>
-							<th>{{ trans("bank.bank_code") }}</th>
-							<th>{{ trans("bank.agency_caracteres_length") }}</th>
-							<th>{{ trans("bank.agency_digit_required") }}</th>
-							<th>{{ trans("bank.agency_digit_length") }}</th>
 
-							<th>{{ trans("bank.account_caracteres_length") }}</th>
-							<th>{{ trans("bank.account_digit_required") }}</th>
-							<th>{{ trans("bank.account_digit_length") }}</th>
-							<th>{{ trans("bank.action_grid") }}</th>
-						</tr>
-						<tr v-for="value in gridData.data" :key="value.id">
-							<td>{{ value.id }}</td>
-							<td>{{ value.name }}</td>
-							<td>{{ value.code }}</td>
-							<td>{{ value.agency_max_length }}</td>
-							<td class="centered">
-								<span
-									v-if="value.agency_digit_required"
-									class="label label-success label-rouded"
-								>{{ trans("bank.yes") }}</span>
-								<span v-else class="label label-danger label-rouded">{{ trans("bank.no") }}</span>
-							</td>
-							<td>{{ value.agency_digit_max_length }}</td>
-							<td>{{ value.account_max_length }}</td>
-							<td class="centered">
-								<span
-									v-if="value.account_digit_required"
-									class="label label-success label-rouded"
-								>{{ trans("bank.yes") }}</span>
-								<span v-else class="label label-danger label-rouded">{{ trans("bank.no") }}</span>
-							</td>
-							<td>{{ value.account_digit_max_length }}</td>
-							<td>
-								<div class="dropdown">
-									<button
-										class="btn btn-info dropdown-toggle"
-										type="button"
-										id="dropdownMenu1"
-										data-toggle="dropdown"
-									>
-										{{ trans("bank.action_grid") }}
-										<span class="caret"></span>
-									</button>
-
-									<div
-										class="dropdown-menu dropdown-menu-right"
-										role="menu"
-										aria-labelledby="dropdownMenu1"
-									>
-										<a
-											class="dropdown-item"
-											id="follow"
-											tabindex="-1"
-											:href="updateRoute + '/' + value.id"
-										>{{ trans("bank.edit") }}</a>
-										<a
-											class="dropdown-item"
-											id="detail"
-											tabindex="-1"
-											@click="deleteBank(value)"
-										>{{ trans("bank.remove") }}</a>
-									</div>
-								</div>
-							</td>
-						</tr>
-					</table>
+					<BankTable
+						:country="getCountry()"
+						:grid-data="gridData"
+					    :update-route="updateRoute"
+        				@delete-bank="deleteBank">
+					</BankTable>
 
 					<pagination :data="gridData" @pagination-change-page="changePage"></pagination>
 				</div>
@@ -280,6 +219,7 @@
 
 <script>
 import axios from "axios";
+import BankTable from "../table";
 export default {
 	props: [
 		"indexRoute",
@@ -290,6 +230,9 @@ export default {
 		"deleteRoute",
 	],
 	name: "CodificarBankPanel",
+	components: {
+    	BankTable
+  	},
 	async mounted() {
 		await this.getCountriesList();
 		await this.getBankList();
@@ -327,12 +270,12 @@ export default {
 				confirmButtonText: "Sim",
 			}).then(async (result) => {
 				if (result.value) {
-					try {
-						const result = await axios.delete(this.deleteRoute + "/" + bank.id);
-						this.getBankList();
-					} catch (error) {
-						console.log("Error Delte Bank", error);
-					}
+				try {
+					const result = await axios.delete(this.deleteRoute + "/" + bank.id);
+					this.getBankList();
+				} catch (error) {
+					console.log("Error Delete Bank", error);
+				}
 				}
 			});
 		},
@@ -364,18 +307,7 @@ export default {
 						page: this.currentPage,
 						itemsperpage: this.itemsperPage,
 					}
-/*           id: this.filter.id,
-					name: this.filter.name,
-					code: this.filter.code,
-					agency_max_length: this.filter.agency_max_length,
-					agency_digit_required: this.filter.agency_digit_required,
-					agency_digit_max_length: this.filter.agency_digit_max_length,
-					account_max_length: this.filter.account_max_length,
-					account_digit_required: this.filter.account_digit_required,
-					account_digit_max_length: this.filter.account_digit_max_length,
-					country_iso: this.filter.country_iso, */
 				});
-				console.log(result);
 
 				this.gridData = result.data;
 			} catch (error) {
@@ -383,7 +315,6 @@ export default {
 			}
 		},
 		async getCountriesList() {
-			console.log(this.countriesRoute);
 			try {
 				const result = await axios.get(this.countriesRoute);
 				this.countries = result.data;
@@ -392,7 +323,6 @@ export default {
 			}
 		},
 		async getBankList() {
-			console.log(this.indexRoute);
 			try {
 				const result = await axios.get(this.indexRoute, 
 					{ params: {itemsperpage: this.itemsperPage}}
@@ -417,6 +347,14 @@ export default {
 			}
 			this.$nextTick();
 		},
+		getCountry () {
+			if(this.gridData.data){
+				const bank = this.gridData.data.find(bank => bank!== undefined);
+				if(bank)
+					return this.countries.find(c => c.id === bank.country_id);
+			}
+			return {};
+		}
 	}
 };
 </script>
