@@ -221,7 +221,7 @@ export default {
 			form: {
 				name: null,
 				code: null,
-				ispb: null,
+				ispb: false,
 				country_id : 0,
 				agency_max_length: 4,
 				agency_digit_required: 0,
