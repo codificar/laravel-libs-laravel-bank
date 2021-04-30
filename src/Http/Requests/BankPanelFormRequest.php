@@ -36,6 +36,7 @@ class BankPanelFormRequest extends FormRequest{
             return [
                 'name' => 'required',
                 'code' => 'required|unique:bank',
+                'ispb' =>  'unique:bank'
             ];
         }else if($this->method() == "PUT"){
             return [                
@@ -43,6 +44,7 @@ class BankPanelFormRequest extends FormRequest{
                 'code' => ['required',
                     Rule::unique('bank')->ignore($this->code, 'code')
                 ],
+                'ispb' => [Rule::unique('bank')->ignore($this->ispb, 'ispb')],
             ];
         }              
     }
@@ -52,6 +54,7 @@ class BankPanelFormRequest extends FormRequest{
             'name.required'             => 'O nome do banco é obrigatório',
             'code.required'             => 'O código do banco é obrigatório',
             'code.unique'               => 'O código informado já está cadastrado',
+            'ispb.unique'               => 'O ISPB informado já está cadastrado',                  
         ];
 
         return $messages;

@@ -61,6 +61,19 @@
 									</div>
 									<!--/ END ROW 1 -->
 									<div v-if="selectedCountry.iso === 'BR'">
+
+										<!-- ISPB option when brazil-->
+										<div class="form-group">
+												<label for="giveName">{{this.trans("bank.ispb") }}</label>
+													<input
+														v-model="form.ispb"
+														type="number"
+														class="form-control"
+														v-bind:placeholder="trans('bank.ispb_placeholder')"
+														maxlength="36"
+													/>
+											</div>
+										</div>
 										<!--/ ROW 2-->
 										<div class="row">
 											<div class="col-md-4">
@@ -208,6 +221,7 @@ export default {
 			form: {
 				name: null,
 				code: null,
+				ispb: null,
 				country_id : 0,
 				agency_max_length: 4,
 				agency_digit_required: 0,
@@ -227,6 +241,7 @@ export default {
 			this.form.country_id = data.country_id;
 			this.form.code = data.code;
 			this.form.agency_max_length = data.agency_max_length;
+			this.form.ispb = data.ispb;
 			this.form.agency_digit_required = data.agency_digit_required;
 			this.form.agency_digit_max_length = data.agency_digit_max_length;
 			this.form.account_max_length = data.account_max_length;

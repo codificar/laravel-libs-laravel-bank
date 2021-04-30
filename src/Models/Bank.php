@@ -26,7 +26,7 @@ class Bank extends Eloquent
 	 */
 	public $timestamps = true;
 
-    protected $fillable = array('id', 'name', 'code', 'agency_max_length', 'agency_digit_required', 'agency_digit_max_length', 'account_max_length',
+    protected $fillable = array('id', 'name', 'code', 'ispb', 'agency_max_length', 'agency_digit_required', 'agency_digit_max_length', 'account_max_length',
         'account_digit_required', 'account_digit_max_length', 'country_id');
 
 
@@ -48,6 +48,15 @@ class Bank extends Eloquent
 
         return $treeData ;
 	}
+
+    /**
+     * set ISPB by bank code
+     */
+    public function setISPB($bankCode, $ispb)
+    {
+        $query = self::query();
+        $query->where('code', $bankCode)->updateOrCreate(['ispb' => $ispb]);
+    }
 
 	public function search($id = null, $name = null, $code = null, $agency_max_length = null, $agency_digit_required =
         null, $agency_digit_max_length = null, $account_max_length = null, $account_digit_required = null,
