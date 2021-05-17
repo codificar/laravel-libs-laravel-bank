@@ -21,6 +21,8 @@ return array(
 	"bank_account"              => "Conta",
     "bank_account_dig"          => "Dígito da conta",
     "country"                   => "País",
+    "ispb"                      =>  "Identificador do Sistema de Pagamentos Brasileiro - ISPB",
+    "ispb_placeholder"          =>  "0000000",
 
     'action_grid'				=> 'Ações',
     'edit' 		    			=> 'Editar',
