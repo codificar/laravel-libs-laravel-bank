@@ -10,5 +10,12 @@
         "psr-4": {
             "Codificar\\Bank\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Codificar\\Bank\\BankServiceProvider"
+            ]
+        }
     }
 }
