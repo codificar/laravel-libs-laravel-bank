@@ -1,6 +1,7 @@
 {
     "name": "codificar/bank",
     "description": "A bank library for laravel. Just fork and modify it.",
+    "type":"package",
     "authors": [{
         "name": "Codificar",
         "email": "libs@codificar.com.br"
