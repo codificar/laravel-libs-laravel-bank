@@ -6,7 +6,7 @@ class BankServiceProvider extends ServiceProvider {
 
     public function register()
     {
-        $this->app->register(Codificar\Bank\BankServiceProvider::class);
+        $this->app->register(BankServiceProvider::class);
     }
 
     public function boot()

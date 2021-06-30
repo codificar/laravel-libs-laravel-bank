@@ -11,6 +11,11 @@
             "Codificar\\Bank\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Codificar\\Bank\\": "src/"
+        }
+    },
     "minimum-stability": "dev",
     "extra": {  
         "laravel": {
