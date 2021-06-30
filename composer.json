@@ -16,7 +16,8 @@
         "laravel": {
             "providers": [
                 "Codificar\\Bank\\BankServiceProvider"
-            ]
+            ],
+            "aliases":{}
         }
     }
 }
