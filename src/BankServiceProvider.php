@@ -4,6 +4,11 @@ use Illuminate\Support\ServiceProvider;
 
 class BankServiceProvider extends ServiceProvider {
 
+    public function register()
+    {
+        $this->app->register(Codificar\Bank\BankServiceProvider::class);
+    }
+
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');
@@ -22,9 +27,5 @@ class BankServiceProvider extends ServiceProvider {
         
     }
 
-    public function register()
-    {
-        $this->app->register(Codificar\Bank\BankServiceProvider::class);
-    }
 }
 ?>
