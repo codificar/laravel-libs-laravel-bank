@@ -12,7 +12,7 @@
         }
     },
     "minimum-stability": "dev",
-    "extra": {
+    "extra": {  
         "laravel": {
             "providers": [
                 "Codificar\\Bank\\BankServiceProvider"
