@@ -4,7 +4,7 @@ namespace Codificar\Bank\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Requests as Input;
 
 use Codificar\Bank\Models\Bank;
 use Codificar\Bank\Http\Requests\BankPanelFormRequest;
@@ -21,7 +21,7 @@ class BankPanelController extends Controller
      */
     public function index(Request $request)
     {
-        $itemsperpage = Input::get('itemsperpage');
+        $itemsperpage = Input::input('itemsperpage');
         return $itemsperpage ? Bank::paginate($itemsperpage) : Bank::all();
     }
 
@@ -33,29 +33,29 @@ class BankPanelController extends Controller
     public function filter(Request $request)
     {
         //Paginate
-        $page = (Input::has('page') && Input::get('page') ? Input::get('page') : 1);
-        $itemsperpage = (Input::has('itemsperpage') && Input::get('itemsperpage') ? Input::get('itemsperpage') : null);
+        $page = (Input::has('page') && Input::input('page') ? Input::input('page') : 1);
+        $itemsperpage = (Input::has('itemsperpage') && Input::input('itemsperpage') ? Input::input('itemsperpage') : null);
         //Data        
-        $id = Input::get('id');
-        $name = Input::get('name');
-        $code = Input::get('code');
+        $id = Input::input('id');
+        $name = Input::input('name');
+        $code = Input::input('code');
 
-        $agency_max_length = Input::get('agency_max_length');
+        $agency_max_length = Input::input('agency_max_length');
 
-        $agency_digit_required = Input::get('agency_digit_required');
+        $agency_digit_required = Input::input('agency_digit_required');
 
-        $agency_digit_max_length = Input::get('agency_digit_max_length');
-        $account_max_length = Input::get('account_max_length');
-        $account_digit_required = Input::get('account_digit_required');
-        $account_digit_max_length = Input::get('account_digit_max_length');   
-        $country_iso = Input::get('country_iso');         
+        $agency_digit_max_length = Input::input('agency_digit_max_length');
+        $account_max_length = Input::input('account_max_length');
+        $account_digit_required = Input::input('account_digit_required');
+        $account_digit_max_length = Input::input('account_digit_max_length');   
+        $country_iso = Input::input('country_iso');         
 
          
         $data = Bank::search($id, $name, $code, $agency_max_length, $agency_digit_required,
         $agency_digit_max_length, $account_max_length, $account_digit_required,
         $account_digit_max_length, $country_iso);
 
-        return $itemsperpage ? $data->paginate($itemsperpage) : $data->get();
+        return $itemsperpage ? $data->paginate($itemsperpage) : $data->input();
     }
 
     /**
@@ -81,7 +81,7 @@ class BankPanelController extends Controller
      */
     public function show($id)
     {
-        return Bank::getById($id);
+        return Bank::inputById($id);
     }
 
     /**
