@@ -37,6 +37,8 @@ Route::group(array('namespace' => 'Codificar\Bank\Http\Controllers', 'middleware
  * Rota para permitir utilizar arquivos de traducao do laravel (dessa lib) no vue js
  */
 Route::get('/libs/lang.trans/{file}', function () {
+    app('debugbar')->disable();
+    
     $fileNames = explode(',', Request::segment(3));
     $lang = config('app.locale');
     $files = array();
