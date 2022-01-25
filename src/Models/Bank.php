@@ -58,7 +58,7 @@ class Bank extends Eloquent
         $query->where('code', $bankCode)->updateOrCreate(['ispb' => $ispb]);
     }
 
-	public function search($id = null, $name = null, $code = null, $agency_max_length = null, $agency_digit_required =
+	public static function search($id = null, $name = null, $code = null, $agency_max_length = null, $agency_digit_required =
         null, $agency_digit_max_length = null, $account_max_length = null, $account_digit_required = null,
         $account_digit_max_length = null, $country_iso = null
     )
