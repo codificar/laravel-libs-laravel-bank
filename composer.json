@@ -1,22 +1,41 @@
 {
     "name": "codificar/bank",
     "description": "A bank library for laravel. Just fork and modify it.",
-    "authors": [{
-        "name": "Codificar",
-        "email": "libs@codificar.com.br"
-    }],
+    "authors": [
+        {
+            "name": "Vladimir Pereira",
+            "email": "vladimir.pereira@codificar.com.br"
+        },
+        {
+            "name": "Raphael Cangucu",
+            "email": "raphael.cangucu@codificar.com.br"
+        }
+    ],
+    "repositories": [
+        {
+          "type": "package",
+          "package": {
+            "name": "codificar/bank",
+            "version": "master",
+            "source": {
+              "url": "https://libs:ofImhksJ@git.codificar.com.br/laravel-libs/laravel-bank.git",
+              "type": "git",
+              "reference": "master"
+            }
+          }
+        }
+    ], 
     "require": {},
     "autoload": {
         "psr-4": {
             "Codificar\\Bank\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Codificar\\Bank\\": "src/"
-        }
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
     },
-    "minimum-stability": "dev",
     "extra": {  
         "laravel": {
             "providers": [
@@ -24,5 +43,6 @@
             ],
             "aliases":{}
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
