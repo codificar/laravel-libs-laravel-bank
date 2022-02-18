@@ -51,8 +51,10 @@ Route::get('/libs/lang.trans/{file}', function () {
         $strings[$name] = require $file;
     }
 
-    header('Content-Type: text/javascript');
-    return ('window.lang = ' . json_encode($strings) . ';');
-    exit();
+    $content  = 'window.lang = ' . json_encode($strings) . ';' ;
+	
+	return response($content)
+			->header('Content-Type', 'application/javascript');
+            
 })->name('assets.lang');
 
