@@ -25,6 +25,8 @@ class AddIspbColumn extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('bank', function (Blueprint $table) {
+            $table->dropColumn('ispb');
+        });
     }
 }

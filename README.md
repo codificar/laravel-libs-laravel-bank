@@ -1,4 +1,5 @@
 # laravel-bank
+
 A CRUD bank library for laravel.
 Uma biblioteca para CRUD de banco
 
@@ -8,7 +9,7 @@ Uma biblioteca para CRUD de banco
 ```
 auth.admin
 ```
-- 2º: The following tables are required. The columns are the same as in the UBERSERVICOS project:
+- 2º: The following tables are required. The columns are the same as in the project:
 ```
 Bank
 Country
@@ -18,40 +19,33 @@ PermissionProfile
 ```
 
 ## Getting Started
+
 - In root of your Laravel app in the composer.json add this code to clone the project:
 
+
+```php
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://libs:ofImhksJ@git.codificar.com.br/laravel-libs/laravel-bank.git"
+    }
+]
 ```
 
-"repositories": [
-		{
-			"type":"package",
-			"package": {
-			  "name": "codificar/bank",
-			  "version":"master",
-			  "source": {
-				  "url": "https://libs:ofImhksJ@git.codificar.com.br/laravel-libs/laravel-bank.git",
-				  "type": "git",
-				  "reference":"master"
-				}
-			}
-		}
-	],
-
-// ...
-
-"require": {
-	// ADD this
-	"codificar/bank": "dev-master",
-},
 
 ```
 - If you want add a specific version (commit, tag or branch), so add like this:
-```
-"codificar/bank": "dev-master#dev",
+
+```php
+
+"require": {
+	"codificar/bank": "1.0.4",
+}
+
 ```
 - Now add 
-```
 
+```php
 "autoload": {
 		//...
 		"psr-4": {
@@ -64,11 +58,12 @@ PermissionProfile
 ```
 - Dump the composer autoloader
 
-```
+```shell
 composer dump-autoload -o
 ```
 
 Check if has the laravel publishes in composer.json with public_vuejs_libs tag:
+
 ```
 	"scripts": {
 		//...
@@ -80,7 +75,7 @@ Check if has the laravel publishes in composer.json with public_vuejs_libs tag:
 
 - Next, we need to add our new Service Provider in our `config/app.php` inside the `providers` array:
 
-```
+```php
 'providers' => [
 		 ...,
 			// The new package class
@@ -89,17 +84,18 @@ Check if has the laravel publishes in composer.json with public_vuejs_libs tag:
 ```
 - Migrate the database tables
 
-```
+```shell
 php artisan migrate
 ```
 
 And finally, start the application by running:
 
-```
+```shell
 php artisan serve
 ```
 
 ## Admin (web)
+
 | Type  | Return | Route  | Description |
 | :------------ |:---------------: |:---------------:| :-----|
 | `get` | View/html | /admin/banks | View to list all banks |
