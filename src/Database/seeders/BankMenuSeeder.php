@@ -1,6 +1,6 @@
 <?php
 
-namespace Codificar\Bank\Database\seeds;
+namespace Codificar\Bank\Database\seeders;
 
 use Illuminate\Database\Seeder;
 
