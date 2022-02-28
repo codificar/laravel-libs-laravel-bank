@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-use Codificar\Bank\Database\seeds\BankMenuSeeder;
+use Codificar\Bank\Database\seeders\BankMenuSeeder;
 
 class AddBankToMenu extends Migration
 {
