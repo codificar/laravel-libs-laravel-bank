@@ -25,6 +25,7 @@
 													class="form-control"
 													v-bind:placeholder= "trans('bank.bank_code')"
 													maxlength="5"
+													data-test="bank_code"
 												/>
 											</div>
 										</div>
@@ -37,6 +38,7 @@
 													class="form-control"
 													v-bind:placeholder="trans('bank.bank_name')"
 													maxlength="255"
+													data-test="bank_name"
 												/>
 											</div>
 										</div>
@@ -48,6 +50,7 @@
 													name="type_entry"
 													class="select form-control"
 													@change="selectCountry"
+													data-test="country"
 												>
 													<option value="0">{{trans('bank.country') }}</option>
 													<option
@@ -71,6 +74,7 @@
 														class="form-control"
 														v-bind:placeholder="trans('bank.ispb_placeholder')"
 														maxlength="36"
+														data-test="ispb"
 													/>
 											</div>
 										</div>
@@ -85,6 +89,7 @@
 														class="form-control"
 														placeholder="Caracteres Agência"
 														maxlength="10"
+														data-test="agency_caracteres_length"
 													/>
 												</div>
 											</div>
@@ -95,6 +100,7 @@
 														name="IsWork"
 														v-model="form.agency_digit_required"
 														class="select form-control"
+														data-test="agency_digit_required"
 													>
 														<option value="0">{{ trans("bank.no") }}</option>
 														<option value="1">{{ trans("bank.yes") }}</option>
@@ -110,6 +116,7 @@
 														class="form-control"
 														v-bind:placeholder="trans('bank.agency_digit_length')"
 														maxlength="10"
+														data-test="agency_digit_length"
 													/>
 												</div>
 											</div>
@@ -126,6 +133,7 @@
 														class="form-control"
 														v-bind:placeholder="trans('bank.account_caracteres_length')"
 														maxlength="10"
+														data-test="account_caracteres_length"
 													/>
 												</div>
 											</div>
@@ -136,6 +144,7 @@
 														name="IsWork"
 														v-model="form.account_digit_required"
 														class="select form-control"
+														data-test="account_digit_required"
 													>
 														<option value="1">{{ trans("bank.yes") }}</option>
 														<option value="0">{{ trans("bank.no") }}</option>
@@ -151,6 +160,7 @@
 														class="form-control"
 														v-bind:placeholder="trans('bank.account_digit_length')"
 														maxlength="10"
+														data-test="account_digit_length"
 													/>
 												</div>
 											</div>
@@ -164,6 +174,7 @@
 											class="btn btn-warning right p-3"
 											type="button"
 											value="Filter_Data"
+											data-test="save"
 										>
 											<i class="mdi mdi-pencil"></i>
 											{{ trans("bank.save") }}
@@ -174,6 +185,7 @@
 											class="btn btn-success right p-3"
 											type="button"
 											value="Filter_Data"
+											data-test="save"
 										>
 											<i class="mdi mdi-plus-circle"></i>
 											{{ this.trans("bank.add") }}
