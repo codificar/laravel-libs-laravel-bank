@@ -2,10 +2,9 @@
 
 Route::group(array('namespace' => 'Codificar\Bank\Http\Controllers'), function () {
     Route::group(['prefix' => '/api'], function () {
-        Route::get('/banks/filter', array('as' => 'BankPanelFilter', 'uses' =>
+        Route::get('/banks/filter', array('uses' =>
          'BankPanelController@filter'));
-        Route::resource('/banks', 'BankPanelController');
-        Route::get('/countries', array('as' => 'Countries', 'uses' => 'CountryController@countries'));
+        Route::get('/countries', array('uses' => 'CountryController@countries'));
     });
 });
 
@@ -55,5 +54,5 @@ Route::get('/libs/lang.trans/{file}', function () {
     return response('window.lang = ' . json_encode($strings) . ';')
             ->header('Content-Type', 'text/javascript');
 
-})->name('assets.lang');
+});
 
