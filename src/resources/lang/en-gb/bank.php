@@ -58,4 +58,9 @@ return array(
 	"bank_agency_dig"           => "Agency digit",
 	"bank_account"              => "Account",
     "bank_account_dig"          => "Account digit",
+
+    'sucess_bank_update' => 'Bank updated successfully',
+    'sucess_bank_create' => 'Successfully registered bank',
+    'fill_in_field_correctly' => 'Fill in the fields correctly',
+
 );
