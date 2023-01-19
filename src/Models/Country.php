@@ -9,6 +9,7 @@ use Eloquent;
 
 class Country extends Eloquent
 {
+    public const BRAZIL_ID = 2;
 	/**
 	 * The table associated with the model.
 	 *

@@ -63,4 +63,9 @@ return array(
     'sucess_bank_create' => 'Successfully registered bank',
     'fill_in_field_correctly' => 'Fill in the fields correctly',
 
+    'name_required' => 'Bank name is required',
+    'code_required' => 'The bank code is required',
+    'code_unique' => 'The code entered is already registered',
+    'ispb_unique' => 'The informed ISPB is already registered',
+
 );

@@ -269,6 +269,9 @@ export default {
 				case 'pt-br':
 					this.selectedCountry.iso = 'BR'
 					break;
+        case 'en-gb':
+          this.selectedCountry.iso = 'GB'
+          break;
 				default:
 					this.selectedCountry.iso = 'BR'
 					break;
@@ -288,10 +291,13 @@ export default {
 					this.$swal({
 						title: this.trans('bank.sucess_bank_create'),
 						html:
-							'<label class="alert alert-success alert-dismissable text-left"> Banco ' +
-							result.data.value.name +
-							" Cadastrado</label>",
-						type: "success",
+                '<label class="alert alert-success alert-dismissable text-left">'
+                + this.trans('bank.bank')
+                + result.data.value.name
+                + " "
+                + this.trans('bank.created')
+                + ' </label>',
+            type: "success",
 					});
 					window.location.href = this.panelRoute;
 					return true;
@@ -323,7 +329,9 @@ export default {
                 + this.trans('bank.bank')
                 + " "
                 + result.data.value.name
-							  +" Cadastrado</label>",
+                + " "
+                + this.trans('bank.updated')
+                +' </label>',
 						type: "success",
 					});
 					window.location.href = this.panelRoute;
