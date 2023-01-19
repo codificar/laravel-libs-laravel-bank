@@ -22,7 +22,7 @@ class UnitedKingdomCountrySeeder extends Seeder
         Country::updateOrCreate(
             ['iso' => 'GB'],
             [
-                'name' => 'Uited Kingdom',
+                'name' => 'United Kingdom',
                 'code' => '826',
                 'phone_code' => '+44',
                 'created_at' => '2022-1-17 00:00:00',
