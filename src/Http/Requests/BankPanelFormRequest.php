@@ -2,6 +2,8 @@
 
 namespace Codificar\Bank\Http\Requests;
 
+use Codificar\Bank\Models\Country;
+use http\Env\Request;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -31,30 +33,29 @@ class BankPanelFormRequest extends FormRequest{
      * @return array
      */
     public function rules()
-    {      
+    {
         if($this->method() == "POST"){
             return [
                 'name' => 'required',
                 'code' => 'required|unique:bank',
-                'ispb' =>  'unique:bank'
+                'ispb' =>  $this->country_id === Country::BRAZIL_ID? 'unique:bank' :''
             ];
         }else if($this->method() == "PUT"){
             return [                
                 'name' => 'required',
-                'code' => ['required',
-                    Rule::unique('bank')->ignore($this->code, 'code')
-                ],
-                'ispb' => [Rule::unique('bank')->ignore($this->ispb, 'ispb')],
+                'code' => $this->country_id === Country::BRAZIL_ID?
+                    ['required', Rule::unique('bank')->ignore($this->code, 'code')]
+                    : [],
             ];
         }              
     }
 
     public function messages() {
         $messages = [
-            'name.required'             => 'O nome do banco é obrigatório',
-            'code.required'             => 'O código do banco é obrigatório',
-            'code.unique'               => 'O código informado já está cadastrado',
-            'ispb.unique'               => 'O ISPB informado já está cadastrado',                  
+            'name.required' => trans('bank.name_required'),
+            'code.required' => trans('bank.code_required'),
+            'code.unique' => trans('bank.code_unique'),
+            'ispb.unique' => trans('bank.ispb_unique'),
         ];
 
         return $messages;
