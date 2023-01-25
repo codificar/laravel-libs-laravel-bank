@@ -3,6 +3,7 @@
 namespace Codificar\Bank\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Codificar\Bank\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as Input;
 
@@ -66,7 +67,11 @@ class BankPanelController extends Controller
      */
     public function store(BankPanelFormRequest $request)
     {
-        $result =  Bank::create($request->all());
+        $requestParams = $request->all();
+        if($requestParams['country_id'] !== Country::BRAZIL_ID)
+            $requestParams['ispb'] = null;
+
+        $result =  Bank::create($requestParams);
         return response()->json([
             'value' => $result,
             'sucess' => true
@@ -93,7 +98,11 @@ class BankPanelController extends Controller
      */
     public function update(BankPanelFormRequest $request, $id)
     {
-        $result = Bank::where('id', $id)->update($request->all());
+        $requestParams = $request->all();
+        if($requestParams['country_id'] !== Country::BRAZIL_ID)
+            $requestParams['ispb'] = null;
+
+        Bank::where('id', $id)->update($requestParams);
         return response()->json([
             'value' => $request->all(),
             'sucess' => true

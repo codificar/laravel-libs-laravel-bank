@@ -28,7 +28,6 @@ return array(
     'edit' 		    			=> 'Editar',
 	'remove' 	    			=> 'Remover',
 	'add' 		    			=> 'Adicionar',
-	'save'	    				=> 'Salvar',
     'search'    				=> 'Pesquisar',
     "filter"				    => "Filtro",
     "clear_filters"             => "Limpar filtros",
@@ -60,4 +59,15 @@ return array(
     'save'                      => 'Salvar alterações',
     'account_error'             => 'A conta no Gateway não foi criada',
     'account_ok'                => 'A conta no Gateway foi criada',
+
+    'sucess_bank_update' => 'Banco atualizado com sucesso',
+    'sucess_bank_create' => 'Banco cadastrado com sucesso',
+    'fill_in_field_correctly' => 'Preencha os campos corretamente',
+    'created' =>' Cadastrado',
+    'updated' =>' Atualizado',
+
+    'name_required' => 'O nome do banco é obrigatório',
+    'code_required' => 'O código do banco é obrigatório',
+    'code_unique' => 'O código informado já está cadastrado',
+    'ispb_unique' => 'O ISPB informado já está cadastrado',
 );

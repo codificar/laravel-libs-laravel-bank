@@ -58,4 +58,14 @@ return array(
 	"bank_agency_dig"           => "Dígito de agencia",
 	"bank_account"              => "Cuenta",
     "bank_account_dig"          => "Dígito de cuenta",
+
+    'sucess_bank_update' => 'Banco actualizado correctamente',
+    'sucess_bank_create' => 'Banco registrado correctamente',
+    'fill_in_field_correctly' => 'Rellena los campos correctamente',
+
+    'name_required' => 'Se requiere el nombre del banco',
+    'code_required' => 'El código bancario es obligatorio',
+    'code_unique' => 'El código ingresado ya está registrado',
+    'ispb_unique' => 'El ISPB informado ya está registrado',
+
 );

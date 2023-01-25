@@ -269,6 +269,9 @@ export default {
 				case 'pt-br':
 					this.selectedCountry.iso = 'BR'
 					break;
+        case 'en-gb':
+          this.selectedCountry.iso = 'GB'
+          break;
 				default:
 					this.selectedCountry.iso = 'BR'
 					break;
@@ -286,18 +289,21 @@ export default {
 				const result = await axios.post(this.storeRoute, this.form);
 				if (result.data.sucess) {
 					this.$swal({
-						title: "Banco cadastrado com sucesso",
+						title: this.trans('bank.sucess_bank_create'),
 						html:
-							'<label class="alert alert-success alert-dismissable text-left"> Banco ' +
-							result.data.value.name +
-							" Cadastrado</label>",
-						type: "success",
+                '<label class="alert alert-success alert-dismissable text-left">'
+                + this.trans('bank.bank')
+                + result.data.value.name
+                + " "
+                + this.trans('bank.created')
+                + ' </label>',
+            type: "success",
 					});
 					window.location.href = this.panelRoute;
 					return true;
 				} else {
 					this.$swal({
-						title: "Preencha os campos corretamente",
+						title: this.trans('bank.fill_in_field_correctly'),
 						html:
 							'<label class="alert alert-warning alert-dismissable text-left">' +
 							result.data.errors.join(", ") +
@@ -306,7 +312,6 @@ export default {
 					});
 				}
 			} catch (error) {
-				console.log("Store Error", error);
 			}
 		},
 		async edit() {
@@ -318,18 +323,22 @@ export default {
 				);
 				if (result.data.sucess) {
 					this.$swal({
-						title: "Banco atualizado com sucesso",
+						title: this.trans('bank.sucess_bank_update'),
 						html:
-							'<label class="alert alert-success alert-dismissable text-left"> Banco ' +
-							result.data.value.name +
-							" Cadastrado</label>",
+							'<label class="alert alert-success alert-dismissable text-left"> '
+                + this.trans('bank.bank')
+                + " "
+                + result.data.value.name
+                + " "
+                + this.trans('bank.updated')
+                +' </label>',
 						type: "success",
 					});
 					window.location.href = this.panelRoute;
 					return true;
 				} else {
 					this.$swal({
-						title: "Preencha os campos corretamente",
+						title: this.trans('bank.fill_in_field_correctly'),
 						html:
 							'<label class="alert alert-warning alert-dismissable text-left">' +
 							result.data.errors.join(", ") +
@@ -338,7 +347,6 @@ export default {
 					});
 				}
 			} catch (error) {
-				console.log("Store Error", error);
 			}
 		},
 		async show(id) {
@@ -346,16 +354,13 @@ export default {
 				const result = await axios.get(`${this.showRoute}/${id}`);
 				return result.data;
 			} catch (error) {
-				console.log("Error Show API", error);
 			}
 		},
 		async getCountriesList() {
-			console.log(this.countriesRoute);
 			try {
 				const result = await axios.get(this.countriesRoute);
 				this.countries = result.data;
 			} catch (error) {
-				console.log("Error countriesRoute", error);
 			}
 		},
 	},
