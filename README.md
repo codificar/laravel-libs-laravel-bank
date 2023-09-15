@@ -69,6 +69,7 @@ Check if has the laravel publishes in composer.json with public_vuejs_libs tag:
 		//...
 		"post-autoload-dump": [
 			"@php artisan vendor:publish --tag=public_vuejs_libs --force"
+			"@php artisan vendor:publish --tag=publish_tests_libs --force"
 		]
 	},
 ```
