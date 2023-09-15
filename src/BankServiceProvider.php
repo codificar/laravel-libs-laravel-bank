@@ -28,7 +28,7 @@ class BankServiceProvider extends ServiceProvider {
         // Publish the tests files 
         $this->publishes([
             __DIR__ . '/../tests/' => base_path('tests/Unit/libs/bank'),
-        ], 'publish_tests_libs');
+        ], 'publishes_bank_tests');
         
     }
 
