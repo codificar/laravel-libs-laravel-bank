@@ -24,6 +24,11 @@ class BankServiceProvider extends ServiceProvider {
         $this->publishes([
             __DIR__.'/../public/js' => public_path('vendor/codificar/bank'),
         ], 'public_vuejs_libs');
+
+        // Publish the tests files 
+        $this->publishes([
+            __DIR__ . '/../tests/' => base_path('tests/Unit/libs/bank'),
+        ], 'publishes_tests');
         
     }
 
