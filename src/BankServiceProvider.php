@@ -27,7 +27,7 @@ class BankServiceProvider extends ServiceProvider {
 
         // Publish the seeders
         $this->publishes([
-            __DIR__ . '/../src/Database/seeders' => base_path('database/seeders/libs/bank'),
+            __DIR__ . '/Database/seeders' => base_path('database/seeders/libs/bank'),
         ], 'publishes_database');
 
         // Publish the tests files 
