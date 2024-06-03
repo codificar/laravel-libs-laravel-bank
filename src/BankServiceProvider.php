@@ -27,8 +27,8 @@ class BankServiceProvider extends ServiceProvider {
 
         // Publish the seeders
         $this->publishes([
-            __DIR__ . '/Database/seeders' => base_path('database/seeders/libs/bank'),
-        ], 'publishes_database');
+            __DIR__.'/Database/seeders' => database_path('seeders')
+        ], 'public_vuejs_libs');
 
         // Publish the tests files 
         $this->publishes([
